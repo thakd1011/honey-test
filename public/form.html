@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>email form</title>
+</head>
+<body>
+<form action="/email_post" method="post">
+    email : <input type="text" name="email"> <br/>
+    submit <input type="submit">
+</form>
+<button class="ajaxsend">ajaxsend</button>
+
+<div class="result"></div>
+
+<script>
+    document.querySelector('.ajaxsend').addEventListener('click', function() {
+        var inputdata = document.forms[0].elements[0].value;
+        sendAjax('http://127.0.0.1:3000/ajax_send_email', inputdata);
+    })
+
+    // app.js에서 이 처리를 반드시 해줘야 에러 안남!
+    function sendAjax(url, data) {
+        var data = {'email' : data};
+        data = JSON.stringify(data);
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('POST', url); // 첫번째 인자가 메소드임
+        xhr.setRequestHeader('Content-Type', "application/json"); // 서버로 보낼 때 json형태로 데이터를 보내니까 type을 써주는게 좋아!
+        xhr.send(data); // 이렇게 넣어주면 data가 obj형태로 날아간다. -> send에 넣어줄 땐 문자열 데이터를 넣어줘야해!
+        xhr.addEventListener('load', function() {
+            // app에서 response로 보낸거 찍었어!
+            var result = JSON.parse(xhr.responseText);
+            // div 추가해서 테스트해보는거야
+            var resultDiv = document.querySelector(".result");
+            if(result.result !== "ok") {
+                resultDiv.innerHTML = "your email is not found";
+            }
+            else {
+                resultDiv.innerHTML = result.name;
+            }
+            // document.querySelector(".result").innerHTML = result.name;
+        }) //응답이 제대로 왔을 때
+    }
+</script>
+</body>
+</html>
