@@ -10,7 +10,7 @@ var path = require('path')
 router.get('/', function(req, res) {
     console.log("main.js loaded");
     // get으로 data 받는 경우 : req.param('email') 이런 식으로 받을 수 있음
-    res.sendFile(path.join(__dirname,'../public/main.html'))
+    res.sendFile(path.join(__dirname,'../public/form.html'))
 });
 //router로 만든 모듈을 export 할 수 있다!
 //node에선 외부 라이브러리 가져와서 require로 가져오거나 export 할 수 있다.
