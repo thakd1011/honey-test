@@ -7,13 +7,22 @@ var main = require('./routes/main') // js는 생략 가능하다.
 
 // db connection
 //express에 mysql 연결 가이드 있어!
+//
 var connection = mysql.createConnection({
-    host : 'localhost',
+    host: 'us-cdbr-iron-east-05.cleardb.net',
+    user : 'b84bd6e063c03d',
     port : '3306',
-    user : 'honeycombo',
-    password : 'sjaqj15951!',
-    database : 'honeycombo'
+    password : '378507c8',
+    database : 'heroku_ede7c59d187240c'
 })
+
+// var connection = mysql.createConnection({
+//     host : 'localhost',
+//     port : '3306',
+//     user : 'honeycombo',
+//     password : 'sjaqj15951!',
+//     database : 'honeycombo'
+// })
 
 connection.connect();
 
