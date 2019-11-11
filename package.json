@@ -1,5 +1,5 @@
 {
-  "name": "honeycombo",
+  "name": "honey-test",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -12,7 +12,7 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "pug": "2.0.0-beta11",
-    "mysal": "*"
+    "mysql": "*"
   },
   "engines": {
     "node": "12.13.0",
